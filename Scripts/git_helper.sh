@@ -16,7 +16,7 @@ echo $1
 
 git add .
 git commit -m "$1"
-#git remote add origin https://github.com/cameronmcnz/example-website.git
+#git remote add origin https://github.com/MistakeTeam/Azana
 #git push -u -f origin master
 git push
 
