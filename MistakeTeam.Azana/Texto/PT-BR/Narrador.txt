@@ -1,0 +1,7 @@
+# comentários
+
+sucesso1 = Valeu!
+sucesso2 = Obrigado!
+sucesso3 = Finalmente!
+
+# mais um comentário

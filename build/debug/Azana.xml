@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Azana</name>
+    </assembly>
+    <members>
+        <member name="T:MistakeTeam.Azana.Texto.Localizar">
+            <Summary>
+             Localizar
+            </Summary>
+        </member>
+        <member name="M:MistakeTeam.Azana.Texto.Localizar.PegarTexto(System.String)">
+            <Summary>
+             Entra no resources de textos e retorna uma string com o valor da chave passada nos parâmetros.
+            </Summary>
+        </member>
+    </members>
+</doc>
