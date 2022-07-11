@@ -1,0 +1,3 @@
+build
+/MistakeTeam.Azana/Texto/*
+!/MistakeTeam.Azana/Texto/*.cs
