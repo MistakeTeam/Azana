@@ -81,17 +81,36 @@
 
 
 
-SOURCEPATH="$(cd -- "../$(dirname "$0")" >/dev/null 2>&1 ; pwd -P)"
-SCRIPTPATH="$(cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P)"
-BUILDPATH="$(cd -- "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 ; pwd -P)"
-echo $SOURCEPATH
-echo $SCRIPTPATH
-echo $BUILDPATH
-echo "$(cd -- "$(dirname "${BASH_SOURCE[0]}")")"
+#SOURCEPATH="$(cd -- "../$(dirname "$0")" >/dev/null 2>&1 ; pwd -P)"
+#SCRIPTPATH="$(cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P)"
+#BUILDPATH="$(cd -- "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 ; pwd -P)"
+#echo $SOURCEPATH
+#echo $SCRIPTPATH
+#echo $BUILDPATH
+#echo "$(cd -- "$(dirname "${BASH_SOURCE[0]}")")"
 
-cd ../build/debug
-PO1="$(cd -- "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 ; pwd -P)"
-echo $PO1
+#cd ../build/debug
+#PO1="$(cd -- "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 ; pwd -P)"
+#echo $PO1
+
+
+#echo "tudo bem?"
+#read -s -n 1 key
+
+#if [[ $key == "" ]]
+#then
+ #   echo OK
+#fi
+
+
+
+echo $1 || "."
+
+
+
+
+
+
 
 
 
