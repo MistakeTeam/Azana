@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MistakeTeam.Ajudante", "MistakeTeam.Ajudante\MistakeTeam.Ajudante.csproj", "{1ECE5438-B8D5-4F32-9D59-CE673E782C10}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MistakeTeam.Azana", "MistakeTeam.Azana\MistakeTeam.Azana.csproj", "{2C5D293E-5CE6-45C4-A7F6-A53D972685E3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1ECE5438-B8D5-4F32-9D59-CE673E782C10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1ECE5438-B8D5-4F32-9D59-CE673E782C10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1ECE5438-B8D5-4F32-9D59-CE673E782C10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1ECE5438-B8D5-4F32-9D59-CE673E782C10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C5D293E-5CE6-45C4-A7F6-A53D972685E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C5D293E-5CE6-45C4-A7F6-A53D972685E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C5D293E-5CE6-45C4-A7F6-A53D972685E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C5D293E-5CE6-45C4-A7F6-A53D972685E3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

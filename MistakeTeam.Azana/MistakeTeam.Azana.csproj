@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\MistakeTeam.Ajudante\MistakeTeam.Ajudante.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <AssemblyName>Azana</AssemblyName>
+    <PackageId>MistakeTeam.Azana</PackageId>
+    <Authors>MistakeTeam</Authors>
+    <Product>Azana</Product>
+    <AssemblyVersion>00.00.001</AssemblyVersion>
+    <FileVersion>00.00.001</FileVersion>
+    <Description>popo</Description>
+    <Copyright>© 2022 MistakeTeam</Copyright>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>

@@ -104,10 +104,20 @@
 
 
 
-echo $1 || "."
+#echo $1 || "."
 
 
 
+
+
+
+jsisj="jeiiwkw/jaiehue/usiis/isisk/jsksk.b"
+utd=${jsisj##*/}
+echo ${utd%.*}
+ety=("${utd//./ }")
+for str in ${ety[@]}; do
+echo $str
+done
 
 
 

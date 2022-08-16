@@ -1,3 +1,11 @@
-build
+#Code Source
 /MistakeTeam.Azana/Texto/*
 !/MistakeTeam.Azana/Texto/*.cs
+
+# C# for Visual Studio Code (powered by OmniSharp)
+Release
+bin
+obj
+
+# Visual Studio Code
+/.vscode

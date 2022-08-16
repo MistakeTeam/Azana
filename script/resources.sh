@@ -4,32 +4,41 @@
 # Copyright (C) Mistake Team. Todos os direitos reservados.
 
 
+SCRIPTPATH="$(cd -- "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 ; pwd -P)"
+SOURCEPATH="$(cd -- "../$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 ; pwd -P)"
+SCRIPTPATH=${SCRIPTPATH/"/c"/"C:"}
+SOURCEPATH=${SOURCEPATH/"/c"/"C:"}
 
-SCRIPTPATH="$(cd -- "$(dirname "${BASH_SOURCE[0]:-$0}")" >/dev/null 2>&1 ; pwd -P)"
-SOURCEPATH="$(cd -- "$(dirname "$SCRIPTPATH")" >/dev/null 2>&1 ; pwd -P)"
-BUILDPATH="$(cd -- "$(dirname "$SCRIPTPATH")/build" >/dev/null 2>&1 ; pwd -P)"
-#echo $SCRIPTPATH
-#echo $SOURCEPATH
-#echo $BUILDPATH
-#echo  "$( dirname -- "$( readlink -f -- "$0" )" )"
+echo $SCRIPTPATH
+echo $SOURCEPATH
 
-
-cd $BUILDPATH/debug
+cd $SOURCEPATH/MistakeTeam.Azana/bin/Debug/net6.0
 mkdir -p resources
+cd resources
 
-echo X----------------------X
-
-for caminho in $SOURCEPATH/mistaketeam.azana/texto/*; do
+for caminho in $SOURCEPATH/MistakeTeam.Azana/Texto/*; do
     if [ -d "$caminho" ]; 
     then
+        echo X----------------------X
         lang="${caminho##*/}"
+        mkdir -p $lang
+        cd $lang
         
         if [ ! -z $1 ] && [[ $1 == $lang ]] || [ -z $1 ]
         then
             echo "Construindo resources '$lang'..."
 
-            wd=`bash $SCRIPTPATH/find_filter.sh $SOURCEPATH/mistaketeam.azana/texto/$lang *.txt`
-            resgen $wd resources/$lang.resources /useSourcePath
+            ty=`bash $SCRIPTPATH/find_filter.sh $SOURCEPATH/MistakeTeam.Azana/Texto/$lang *.txt`
+            wd=""
+            for str in ${ty[@]}; do
+                urw=${str##*/}
+                wd+="$str,$SOURCEPATH/MistakeTeam.Azana/bin/Debug/net6.0/resources/$lang/${urw%.*}.resources "
+            done
+            echo $wd
+
+            resgen -useSourcePath -compile $wd
         fi
+        
+        cd ../..
     fi
 done

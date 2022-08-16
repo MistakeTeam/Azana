@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>MistakeTeam.Ajudante</AssemblyName>
+    <PackageId>MistakeTeam.Ajudante</PackageId>
+    <Authors>MistakeTeam</Authors>
+    <Product>MistakeTeam.Ajudante</Product>
+    <AssemblyVersion>00.00.001</AssemblyVersion>
+    <FileVersion>00.00.001</FileVersion>
+    <Description>popo</Description>
+    <Copyright>© 2022 MistakeTeam</Copyright>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>
