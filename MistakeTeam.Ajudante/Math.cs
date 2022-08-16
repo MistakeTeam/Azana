@@ -1,7 +1,5 @@
 using System;
 
-
-
 namespace MistakeTeam.Azana.Ajudante
 {
     ///<Summary>
