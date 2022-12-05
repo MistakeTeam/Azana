@@ -1,37 +1,86 @@
-using System;
 using System.Reflection;
 using MistakeTeam.Azana.Ajudante;
+using MistakeTeam.Azana.Interfaces;
+using MistakeTeam.Azana.Logs;
 
-namespace MistakeTeam.Azana.Comandos {
-    public class ComandoMestre {
-        private Dictionary<string, MethodInfo> CMetodos = new Dictionary<string, MethodInfo>();
-        private Dictionary<string, Type> CClasses = new Dictionary<string, Type>();
-        public List<string> CLista = new List<string>();
-        
-        public ComandoMestre () { }
-        
-        public void Init () {
-            foreach (Type control in Assembly.GetExecutingAssembly().GetTypes()
-                    .Where(mytype =>  String.Equals(mytype.Namespace, "MistakeTeam.Azana.Comandos", StringComparison.Ordinal) 
-                    && mytype.GetInterfaces().Contains(typeof(IComando)))) {
-                
-                
-                CLista.Add(control.Name);
-                CClasses.Add(control.Name, control);
-                CMetodos.Add(control.Name, control.GetMethod("Run"));
+namespace MistakeTeam.Azana.Comandos
+{
+    public class ComandoMestre
+    {
+        // Dicionarios para listar os comandos:
+        private readonly static Dictionary<List<string>, Type> CClasses = new(); // Lista a classe de cada comando
+        private readonly static List<string> CLista = new(); // Lista o nome de cada comando
+
+        public static void Iniciar()
+        {
+            LogFile.WriteLine("Iniciando comandos...");
+
+            // É feita uma busca em todo o codigo pelo namespace: "MistakeTeam.Azana.Comandos"_cls
+            foreach (
+                Type comando in Assembly
+                    .GetExecutingAssembly()
+                    .GetTypes()
+                    .Where(
+                        mytype =>
+                            string.Equals(
+                                mytype.Namespace,
+                                "MistakeTeam.Azana.Comandos",
+                                StringComparison.Ordinal
+                            ) && mytype.GetInterfaces().Contains(typeof(IComando))
+                    )
+            )
+            {
+                // Se existir alguma classe no namespace, cada uma delas será listado aqui
+                if (comando != null)
+                {
+                    IComando cc = (IComando)Activator.CreateInstance(comando);
+                    List<string> _cls = new()
+                    {
+                        cc.Nome
+                    };
+
+                    CLista.Add(cc.Nome);
+                    if (cc.Aliase != "")
+                    {
+                        _cls.Add(cc.Aliase);
+                        CLista.Add(cc.Aliase);
+                    }
+
+                    CClasses.Add(_cls, comando);
+                }
             }
+
+            LogFile.WriteLine("{0} comandos foram registrados", CClasses.Count);
         }
-        
-        public void ExecutarComando(string Nome) {
-            if (!CLista.Contains(Nome)) {
-                ConsoleLine.Erro("Comando não existe.");
+
+        public static Type? ProcurarComando(string Nome)
+        {
+            // Existe?
+            if (!CLista.Contains(Nome))
+            {
+                LogFile.WriteLine("Comando não existe.");
+                return null;
+            }
+
+            return CClasses.First(n => n.Key.Contains(Nome)).Value;
+        }
+
+        // Vamos executar o comando?
+        public static void ExecutarComando(string Nome)
+        {
+            Type t = ProcurarComando(Nome);
+
+            // Existe?
+            if (t == null)
+            {
                 return;
             }
-            
-            Type t = CClasses[Nome];
-            MethodInfo m = CMetodos[Nome];
-            
-            m.Invoke(Activator.CreateInstance(t), null);
+
+
+            //Cria-se uma instancia da classe
+            IComando op = (IComando)Activator.CreateInstance(t);
+
+            op.Run(); // A magia acontece aqui
         }
     }
 }
