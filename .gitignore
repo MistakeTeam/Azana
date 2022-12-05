@@ -1,6 +1,3 @@
-#Code Source
-/MistakeTeam.Azana/Texto/*
-!/MistakeTeam.Azana/Texto/*.cs
 
 # C# for Visual Studio Code (powered by OmniSharp)
 Release
@@ -9,3 +6,6 @@ obj
 
 # Visual Studio Code
 /.vscode
+
+# Dotnet
+.config
