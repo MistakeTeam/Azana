@@ -10,8 +10,9 @@ namespace MistakeTeam.Azana.Ajudante
         ///<Summary>
         /// Pegar a porcentagem de um valor.
         ///</Summary>
-        public static float pegarporcentagem (float valor, float total) {
-            return (valor/total)*100;
+        public static float Pegarporcentagem(float valor, float total)
+        {
+            return (valor / total) * 100;
         }
     }
 }
