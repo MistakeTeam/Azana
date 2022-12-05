@@ -1,6 +1,0 @@
-name: Azana
-namespace: MistakeTeam.Azana
-target: exe
-references: MistakeTeam.Ajudante.dll
-resources: true
-outname: Azana.exe
