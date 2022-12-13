@@ -8,8 +8,15 @@ namespace MistakeTeam.Azana.Logs
     {
         private static bool _iniciado = false;
         private static string _filepath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\logs";
-        private static string _filename = string.Format("\\azana_log_{0}-{1}-{2}T{3}-{4}-{5}.txt",
-                    DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
+        private static string _filename = string.Format("\\{0}_log_{1}-{2}-{3}T{4}-{5}-{6}.txt",
+                Path.GetFileNameWithoutExtension(Assembly.GetExecutingAssembly().Location),
+                DateTime.Now.Day,
+                DateTime.Now.Month,
+                DateTime.Now.Year,
+                DateTime.Now.Hour,
+                DateTime.Now.Minute,
+                DateTime.Now.Second
+            );
 
         public static void Iniciar()
         {
@@ -36,6 +43,7 @@ namespace MistakeTeam.Azana.Logs
                 StackTrace st = new StackTrace();
                 StackFrame sf = st.GetFrame(1);
 
+                // Volte uma casa
                 if (sf.GetMethod().Name == "WriteLine")
                 {
                     sf = st.GetFrame(2);

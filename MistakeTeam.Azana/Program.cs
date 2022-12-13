@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Diagnostics;
+using System.Reflection;
 using MistakeTeam.Azana.Ajudante;
 using MistakeTeam.Azana.Comandos;
 using MistakeTeam.Azana.Eventos;
@@ -20,6 +21,7 @@ namespace MistakeTeam.Azana
             // Mensagem de boas-vindas
             ConsoleLine.Enviar(ConsoleLine.FormatarLinha("Bem-vindo!"));
             ConsoleLine.Enviar("Algo aconteceu...");
+            ConsoleLine.Enviar(Directory.GetCurrentDirectory());
             ConsoleLine.Enviar(ConsoleLine.FormatarLinha());
 
             // Loop de comandos
@@ -43,7 +45,6 @@ namespace MistakeTeam.Azana
                     {
                         await Task.Run(() =>
                         {
-                            //Process.Start(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\Azana.exe");
                             Console.WriteLine(Assembly.GetEntryAssembly().Location);
                         });
                     }
@@ -51,6 +52,20 @@ namespace MistakeTeam.Azana
 
                 await Task.Run(() =>
                 {
+                    ProcessStartInfo startInfo = new ProcessStartInfo
+                    {
+                        FileName = "cmd.exe",
+                        RedirectStandardInput = true,
+                        RedirectStandardOutput = true,
+                        UseShellExecute = false,
+                        CreateNoWindow = true
+                    };
+
+                    Process process = new Process { StartInfo = startInfo };
+
+                    process.Start();
+                    process.StandardInput.WriteLine("oi");
+
                     Inicio();
                 });
             }

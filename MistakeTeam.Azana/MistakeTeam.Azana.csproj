@@ -6,18 +6,18 @@
   <PropertyGroup>
     <AssemblyName>Azana</AssemblyName>
     <PackageId>MistakeTeam.Azana</PackageId>
-    <Authors>MistakeTeam</Authors>
+    <Authors>xDeltaFox</Authors>
     <Company>MistakeTeam</Company>
-    <Product>MistakeTeam.Ajudante</Product>
-    <Version>0.0.5-alfa.25B</Version>
-    <AssemblyVersion>0.0.5</AssemblyVersion>
+    <Product>MistakeTeam.Azana</Product>
+    <Version>0.0.6-alfa.03A</Version>
+    <AssemblyVersion>0.0.6</AssemblyVersion>
     <Description>popo</Description>
     <Copyright>© 2022 MistakeTeam</Copyright>
     <OutputType>Exe</OutputType>
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <NoWarn>8600;0169;8600;8604;8625;IDE0044;1834;IDE0090;IDE0057;CA1830;8602;0165;IDE0011;8605;IDE0058;CA1834;IDE0052;CS8622</NoWarn>
+    <NoWarn>8600;0169;8600;8604;8625;IDE0044;1834;IDE0090;IDE0057;CA1830;8602;0165;IDE0011;8605;IDE0058;CA1834;IDE0052;CS8622;CA1305</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <DebugSymbols>False</DebugSymbols>
