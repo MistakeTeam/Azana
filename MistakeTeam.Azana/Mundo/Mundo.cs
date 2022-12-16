@@ -7,7 +7,7 @@ namespace MistakeTeam.Azana.Mundo
 {
     public class Mundo
     {
-        public void Iniciar()
+        public static void Iniciar()
         {
 
         }
