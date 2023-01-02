@@ -90,8 +90,8 @@ namespace MistakeTeam.Azana.Ajudante
 
         public static void Enviar(object texto, params object[] args)
         {
-            Array values = Enum.GetValues(typeof(ConsoleColor));
-            Console.ForegroundColor = (ConsoleColor)values.GetValue(new Random().Next(values.Length));
+            // Array values = Enum.GetValues(typeof(ConsoleColor));
+            // Console.ForegroundColor = (ConsoleColor)values.GetValue(new Random().Next(values.Length));
 
             if (args == null)
             {
@@ -114,6 +114,20 @@ namespace MistakeTeam.Azana.Ajudante
             Enviar(FormatarLinha());
         }
 
+        public static string FormatarLinha(string texto = null)
+        {
+            string dp = "--------------------------------------------------";
+            if (texto != null)
+            {
+                dp = dp[..((dp.Length / 2) - (texto.Length / 2))];
+                return string.Format(dp + texto.ToUpper() + dp);
+            }
+            else
+            {
+                return dp;
+            }
+        }
+
         public static void Debug(string texto, params object[] args)
         {
             Log("[DEBUG] " + texto, "Debug", args);
@@ -127,20 +141,6 @@ namespace MistakeTeam.Azana.Ajudante
         public static void Erro(string texto, params object[] args)
         {
             Log("[ERROR] " + texto, "Erro", args);
-        }
-
-        public static string FormatarLinha(string texto = null)
-        {
-            string dp = "--------------------------------------------------";
-            if (texto != null)
-            {
-                dp = dp[..((dp.Length / 2) - (texto.Length / 2))];
-                return string.Format(dp + texto.ToUpper() + dp);
-            }
-            else
-            {
-                return dp;
-            }
         }
     }
 }

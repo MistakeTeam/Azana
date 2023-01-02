@@ -6,8 +6,8 @@
     <Authors>MistakeTeam</Authors>
     <Company>MistakeTeam</Company>
     <Product>MistakeTeam.Ajudante</Product>
-    <Version>0.0.5-alfa.25B</Version>
-    <AssemblyVersion>0.0.5</AssemblyVersion>
+    <Version>0.0.6-alfa</Version>
+    <AssemblyVersion>0.0.6</AssemblyVersion>
     <Description>popo</Description>
     <Copyright>© 2022 MistakeTeam</Copyright>
     <TargetFramework>net7.0</TargetFramework>
