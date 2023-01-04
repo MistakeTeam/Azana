@@ -1,11 +1,10 @@
 using System.Reflection;
-using MistakeTeam.Azana.Ajudante;
-using MistakeTeam.Azana.Interfaces;
-using MistakeTeam.Azana.Logs;
+using Remy.Interfaces;
+using Remy.Logs;
 
-namespace MistakeTeam.Azana.Comandos
+namespace Remy
 {
-    public class ComandoMestre
+    public class Comandos
     {
         // Dicionarios para listar os comandos:
         private readonly static Dictionary<List<string>, Type> CClasses = new(); // Lista a classe de cada comando
@@ -21,12 +20,7 @@ namespace MistakeTeam.Azana.Comandos
                     .GetExecutingAssembly()
                     .GetTypes()
                     .Where(
-                        mytype =>
-                            string.Equals(
-                                mytype.Namespace,
-                                "MistakeTeam.Azana.Comandos",
-                                StringComparison.Ordinal
-                            ) && mytype.GetInterfaces().Contains(typeof(IComando))
+                        mytype => mytype.GetInterfaces().Contains(typeof(IComando))
                     )
             )
             {

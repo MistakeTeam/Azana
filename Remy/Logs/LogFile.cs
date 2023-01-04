@@ -2,14 +2,18 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 
-namespace MistakeTeam.Azana.Logs
+namespace Remy.Logs
 {
     public static class LogFile
     {
         private static bool _iniciado = false;
         private static string _filepath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\logs";
-        private static string _filename = string.Format("\\{0}_log_{1}-{2}-{3}T{4}-{5}-{6}.txt",
-                Path.GetFileNameWithoutExtension(Assembly.GetExecutingAssembly().Location),
+        private static string _filename;
+
+        public static void Iniciar(string nome)
+        {
+            _filename = string.Format("\\{0}_log_{1}-{2}-{3}T{4}-{5}-{6}.txt",
+                nome,
                 DateTime.Now.Day,
                 DateTime.Now.Month,
                 DateTime.Now.Year,
@@ -18,8 +22,6 @@ namespace MistakeTeam.Azana.Logs
                 DateTime.Now.Second
             );
 
-        public static void Iniciar()
-        {
             if (!_iniciado)
             {
                 if (!Directory.Exists(_filepath))

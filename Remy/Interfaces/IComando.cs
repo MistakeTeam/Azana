@@ -1,4 +1,4 @@
-namespace MistakeTeam.Azana.Interfaces
+namespace Remy.Interfaces
 {
     public interface IComando
     {
