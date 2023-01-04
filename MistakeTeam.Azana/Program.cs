@@ -1,9 +1,8 @@
-﻿using System.Diagnostics;
-using System.Reflection;
-using MistakeTeam.Azana.Ajudante;
-using MistakeTeam.Azana.Comandos;
-using MistakeTeam.Azana.Eventos;
-using MistakeTeam.Azana.Logs;
+﻿using System.Reflection;
+using MistakeTeam.Azana.Mundo;
+using MistakeTeam.Azana.Texto;
+using Remy;
+using Remy.Logs;
 
 namespace MistakeTeam.Azana
 {
@@ -11,18 +10,26 @@ namespace MistakeTeam.Azana
     {
         private static void Inicio()
         {
-            LogFile.Iniciar();
+            LogFile.Iniciar(Path.GetFileNameWithoutExtension(Assembly.GetExecutingAssembly().Location));
             LogFile.WriteLine("Iniciando Azana...");
 
             // Iniciando modulos
-            EventosMestre.Iniciar();
-            ComandoMestre.Iniciar();
+            Eventos.Iniciar();
+            Comandos.Iniciar();
+            Mapa.Iniciar();
 
             // Mensagem de boas-vindas
-            ConsoleLine.Enviar(ConsoleLine.FormatarLinha("Bem-vindo!"));
+            ConsoleLine.Enviar(ConsoleLine.FormatarLinha("Bem-vindo! ようこそ"));
             ConsoleLine.Enviar("Algo aconteceu...");
-            ConsoleLine.Enviar(Directory.GetCurrentDirectory());
             ConsoleLine.Enviar(ConsoleLine.FormatarLinha());
+
+
+            ConsoleLine.Enviar(Localizar.PegarTexto(TextoPath.NARRADOR, "oo"));
+
+            Eventos.OnProcessExit((a, b) =>
+            {
+                LogFile.WriteLine("Tchauzinho");
+            });
 
             // Loop de comandos
             bool ativo = true;
@@ -31,7 +38,7 @@ namespace MistakeTeam.Azana
                 Console.Write(">");
                 string iut = Console.ReadLine();
 
-                ComandoMestre.ExecutarComando(iut);
+                Comandos.ExecutarComando(iut);
             }
         }
 
@@ -39,42 +46,14 @@ namespace MistakeTeam.Azana
         {
             try
             {
-                if (args.Length != 0)
-                {
-                    if (args[0] == "debug")
-                    {
-                        await Task.Run(() =>
-                        {
-                            Console.WriteLine(Assembly.GetEntryAssembly().Location);
-                        });
-                    }
-                }
-
                 await Task.Run(() =>
                 {
-                    ProcessStartInfo startInfo = new ProcessStartInfo
-                    {
-                        FileName = "cmd.exe",
-                        RedirectStandardInput = true,
-                        RedirectStandardOutput = true,
-                        UseShellExecute = false,
-                        CreateNoWindow = true
-                    };
-
-                    Process process = new Process { StartInfo = startInfo };
-
-                    process.Start();
-                    process.StandardInput.WriteLine("oi");
-
                     Inicio();
                 });
             }
             catch (Exception e)
             {
-                await Task.Run(() =>
-                {
-                    Console.WriteLine(e);
-                });
+                Console.WriteLine(e);
             }
         }
     }

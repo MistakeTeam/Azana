@@ -1,6 +1,6 @@
-using MistakeTeam.Azana.Interfaces;
+using Remy.Interfaces;
 
-namespace MistakeTeam.Azana.Comandos
+namespace MistakeTeam.Azana
 {
     public class Ping : IComando
     {

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
-    <ProjectReference Include="..\MistakeTeam.Ajudante\MistakeTeam.Ajudante.csproj" />
+    <ProjectReference Include="..\Remy\Remy.csproj" />
   </ItemGroup>
   <PropertyGroup>
     <AssemblyName>Azana</AssemblyName>
@@ -9,17 +9,15 @@
     <Authors>xDeltaFox</Authors>
     <Company>MistakeTeam</Company>
     <Product>MistakeTeam.Azana</Product>
-    <Version>0.0.6-alfa.03A</Version>
-    <AssemblyVersion>0.0.6</AssemblyVersion>
+    <Version>0.0.7-alfa</Version>
+    <AssemblyVersion>0.0.7</AssemblyVersion>
     <Description>popo</Description>
-    <Copyright>© 2022 MistakeTeam</Copyright>
+    <Copyright>© 2023 MistakeTeam</Copyright>
     <OutputType>Exe</OutputType>
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <NoWarn>8600;0169;8600;8604;8625;IDE0044;1834;IDE0090;IDE0057;CA1830;8602;0165;IDE0011;8605;IDE0058;CA1834;IDE0052;CS8622;CA1305</NoWarn>
-    <DebugType>embedded</DebugType>
-    <Optimize>False</Optimize>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <DebugSymbols>False</DebugSymbols>

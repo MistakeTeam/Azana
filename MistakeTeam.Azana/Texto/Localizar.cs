@@ -1,5 +1,4 @@
-using System.IO;
-using System.Resources;
+using Remy.Logs;
 
 namespace MistakeTeam.Azana.Texto
 {
@@ -8,28 +7,47 @@ namespace MistakeTeam.Azana.Texto
     ///</Summary>
     public class Localizar
     {
-        private string lang = "PT-BR";
-        private string pathEXE = Directory.GetCurrentDirectory();
-
         ///<Summary>
-        /// Entra no resources de textos e retorna uma string com o valor da chave passada nos parâmetros.
+        /// Entra no Bloco e retorna uma string com o valor da chave.
         ///</Summary>
-        public string PegarTexto(string bloco, string chave)
+        public static string PegarTexto(string bloco, string chave)
         {
-            string resourcePath = Path.GetFullPath(
-                pathEXE + $"/resources/{lang}/{bloco}.resources"
-            );
+            string[] txt = File.ReadAllLines(bloco);
+            string s = "";
 
-            //ConsoleLine.Enviar(resourcePath);
-            ResourceReader rr = new(resourcePath);
+            for (int i = 0; i < txt.Length; i++)
+            {
+                string linha = txt[i];
+                string[] tt = linha.Split("=");
+                int numerolinha = i + 1;
 
-            rr.GetResourceData(chave, out string dataType, out byte[] data);
+                if (linha.StartsWith('#') || tt.Length <= 1)
+                {
+                    continue;
+                }
 
-            BinaryReader reader = new(new MemoryStream(data));
-            string binData = reader.ReadString();
+                string c = tt[0].Replace("\"", "");
+                string v = tt[1].Replace("\"", "");
 
-            rr.Close();
-            return binData;
+                if (c == chave)
+                {
+                    s = v;
+                }
+                else
+                {
+                    s = c;
+                }
+            }
+
+            return s;
+        }
+
+        public static string TextoAleatorio(string bloco)
+        {
+            string[] txt = File.ReadAllLines(bloco);
+            string linha = txt[new Random().Next(txt.Length)];
+
+            return linha.Replace("\"", "");
         }
     }
 }

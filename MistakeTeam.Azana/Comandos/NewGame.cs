@@ -1,7 +1,8 @@
-using MistakeTeam.Azana.Ajudante;
-using MistakeTeam.Azana.Interfaces;
+using Remy;
+using Remy.Interfaces;
+using Remy.Logs;
 
-namespace MistakeTeam.Azana.Comandos
+namespace MistakeTeam.Azana
 {
     public class NewGame : IComando
     {
@@ -11,9 +12,11 @@ namespace MistakeTeam.Azana.Comandos
 
         public void Run()
         {
-            Jogador _jogador = new();
-
-            ConsoleLine.Enviar(_jogador.Vida);
+            foreach (string cn in Mundo.Mapa.PegarLista())
+            {
+                LogFile.WriteLine(cn);
+                ConsoleLine.Enviar(cn);
+            }
         }
     }
 }
