@@ -5,7 +5,7 @@ using Remy.Logs;
 
 namespace Remy
 {
-    public class ConsoleLine
+    public class Mensagem
     {
         private static readonly string projectFolder = Path.GetFullPath(Assembly.GetExecutingAssembly().Location);
 
@@ -102,6 +102,13 @@ namespace Remy
             {
                 Console.WriteLine(string.Format(Convert.ToString(texto), args));
             }
+        }
+
+        internal static void BemVindo(string msg)
+        {
+            Mensagem.Enviar(Mensagem.FormatarLinha("Bem-vindo! ようこそ"));
+            Mensagem.Enviar(msg);
+            Mensagem.Enviar(Mensagem.FormatarLinha());
         }
 
         private static void Log(string texto, string Level, params object[] args)
