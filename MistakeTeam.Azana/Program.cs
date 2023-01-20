@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using MistakeTeam.Azana.Mundo;
 using MistakeTeam.Azana.Texto;
 using Remy;
@@ -10,21 +10,19 @@ namespace MistakeTeam.Azana
     {
         private static void Inicio()
         {
-            LogFile.Iniciar(Path.GetFileNameWithoutExtension(Assembly.GetExecutingAssembly().Location));
+            Motor.Ligar(new RemyOptions()
+            {
+                Nome = "Azana",
+                BemVindo = "Algo aconteceu..."
+            }); // Partiu?
+
+            // LogFile.Iniciar(Path.GetFileNameWithoutExtension(Assembly.GetExecutingAssembly().Location));
             LogFile.WriteLine("Iniciando Azana...");
 
             // Iniciando modulos
-            Eventos.Iniciar();
-            Comandos.Iniciar();
             Mapa.Iniciar();
 
-            // Mensagem de boas-vindas
-            ConsoleLine.Enviar(ConsoleLine.FormatarLinha("Bem-vindo! ようこそ"));
-            ConsoleLine.Enviar("Algo aconteceu...");
-            ConsoleLine.Enviar(ConsoleLine.FormatarLinha());
-
-
-            ConsoleLine.Enviar(Localizar.PegarTexto(TextoPath.NARRADOR, "oo"));
+            Mensagem.Enviar(Localizar.PegarTexto(TextoPath.NARRADOR, "oo"));
 
             Eventos.OnProcessExit((a, b) =>
             {
@@ -32,13 +30,12 @@ namespace MistakeTeam.Azana
             });
 
             // Loop de comandos
-            bool ativo = true;
-            while (ativo)
+            while (true)
             {
                 Console.Write(">");
-                string iut = Console.ReadLine();
+                string[] args = Console.ReadLine().Split(" ");
 
-                Comandos.ExecutarComando(iut);
+                Comandos.Executar(args);
             }
         }
 
@@ -46,10 +43,7 @@ namespace MistakeTeam.Azana
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    Inicio();
-                });
+                await Task.Run(Inicio);
             }
             catch (Exception e)
             {

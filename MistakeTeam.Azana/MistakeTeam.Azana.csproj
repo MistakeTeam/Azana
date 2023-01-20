@@ -9,8 +9,8 @@
     <Authors>xDeltaFox</Authors>
     <Company>MistakeTeam</Company>
     <Product>MistakeTeam.Azana</Product>
-    <Version>0.0.7-alfa</Version>
-    <AssemblyVersion>0.0.7</AssemblyVersion>
+    <Version>0.0.8</Version>
+    <AssemblyVersion>0.0.8</AssemblyVersion>
     <Description>popo</Description>
     <Copyright>© 2023 MistakeTeam</Copyright>
     <OutputType>Exe</OutputType>
