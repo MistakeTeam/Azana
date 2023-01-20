@@ -7,27 +7,27 @@ namespace Remy
     public class Comandos
     {
         // Dicionarios para listar os comandos:
-        private readonly static Dictionary<List<string>, Type> CClasses = new(); // Lista a classe de cada comando
-        private readonly static List<string> CLista = new(); // Lista o nome de cada comando
+        private static readonly Dictionary<List<string>, ComandoAbstrado> CClasses = new(); // Lista a classe de cada comando
+        private static readonly List<string> CLista = new(); // Lista o nome de cada comando
 
         public static void Iniciar()
         {
             LogFile.WriteLine("Iniciando comandos...");
 
-            // É feita uma busca em todo o codigo pelo namespace: "MistakeTeam.Azana.Comandos"_cls
+            // É feita uma busca no assembly principal pelo namespace: "MistakeTeam.Azana.Comandos"
             foreach (
                 Type comando in Assembly
-                    .GetExecutingAssembly()
+                    .GetEntryAssembly()
                     .GetTypes()
                     .Where(
-                        mytype => mytype.GetInterfaces().Contains(typeof(IComando))
+                        mytype => mytype.IsClass && !mytype.IsAbstract && mytype.IsSubclassOf(typeof(ComandoAbstrado))
                     )
-            )
+                )
             {
                 // Se existir alguma classe no namespace, cada uma delas será listado aqui
                 if (comando != null)
                 {
-                    IComando cc = (IComando)Activator.CreateInstance(comando);
+                    ComandoAbstrado cc = (ComandoAbstrado)Activator.CreateInstance(comando);
                     List<string> _cls = new()
                     {
                         cc.Nome
@@ -40,41 +40,31 @@ namespace Remy
                         CLista.Add(cc.Aliase);
                     }
 
-                    CClasses.Add(_cls, comando);
+                    CClasses.Add(_cls, cc);
                 }
             }
 
             LogFile.WriteLine("{0} comandos foram registrados", CClasses.Count);
         }
 
-        public static Type? ProcurarComando(string Nome)
+        public static ComandoAbstrado? Procurar(string Nome)
         {
-            // Existe?
-            if (!CLista.Contains(Nome))
-            {
-                LogFile.WriteLine("Comando não existe.");
-                return null;
-            }
-
-            return CClasses.First(n => n.Key.Contains(Nome)).Value;
+            return CClasses.FirstOrDefault(n => n.Key.Contains(Nome)).Value ?? null;
         }
 
         // Vamos executar o comando?
-        public static void ExecutarComando(string Nome)
+        public static void Executar(string[] args)
         {
-            Type t = ProcurarComando(Nome);
+            ComandoAbstrado t = Procurar(args[0]);
 
             // Existe?
             if (t == null)
             {
+                LogFile.WriteLine("Comando não existe.");
                 return;
             }
 
-
-            //Cria-se uma instancia da classe
-            IComando op = (IComando)Activator.CreateInstance(t);
-
-            op.Run(); // A magia acontece aqui
+            t.Run(args.Where(x => x != args[0]).ToArray()); // A magia acontece aqui
         }
     }
 }

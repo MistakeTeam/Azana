@@ -1,16 +1,24 @@
+using System.Reflection;
+using Remy;
 using Remy.Interfaces;
 
-namespace MistakeTeam.Azana
+namespace MistakeTeam.Azana.Comando
 {
-    public class Ping : IComando
+    public class Ping : ComandoAbstrado
     {
-        public string Nome => "ping";
-        public string Descricao => "Sem descrição";
-        public string Aliase => "";
+        public override string Nome => "ping";
+        public override string Descricao => "Sem descrição";
+        public override string Aliase => "";
 
-        public void Run()
+        public override void Run(string[] args)
         {
             Console.WriteLine("Pong!");
+
+            Mensagem.Enviar(IsSubComando());
+            foreach (Type item in Filhos())
+            {
+                Mensagem.Enviar(item);
+            }
         }
     }
 }
