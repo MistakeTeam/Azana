@@ -1,4 +1,6 @@
 using Remy.Logs;
+using Remy.ScriptParse;
+using YamlDotNet.RepresentationModel;
 
 namespace Remy
 {
@@ -17,6 +19,16 @@ namespace Remy
             Comandos.Iniciar();
 
             Mensagem.BemVindo(op.BemVindo);
+
+            ScriptsParse SP = new ScriptsParse($"{Directory.GetCurrentDirectory()}/Script/Text.txt");
+            Mensagem.Enviar(SP.GetChave("tommy.id"));
+            Mensagem.Enviar(SP.GetChave("isso_pode.id"));
+            Mensagem.Enviar(SP.GetChave("isso_pode.comer"));
+            Mensagem.Enviar(SP.GetChave("isso_pode.correr"));
+            Mensagem.Enviar(SP.GetChave("cade.comida"));
+            Mensagem.Enviar(SP.GetChave("cade.mercado.arroz"));
+            Mensagem.Enviar(SP.GetChave("cade.shopping.americanas.kitkat"));
+            Mensagem.Enviar(SP.GetChave("cade.shopping.americanas.livros.fantasia.mistborn"));
 
             Eventos.OnProcessExit((a, b) =>
             {

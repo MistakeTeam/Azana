@@ -1,5 +1,4 @@
 using System.Reflection;
-using Remy.Interfaces;
 using Remy.Logs;
 
 namespace Remy
@@ -28,6 +27,9 @@ namespace Remy
                 if (comando != null)
                 {
                     ComandoAbstrado cc = (ComandoAbstrado)Activator.CreateInstance(comando);
+
+                    if (cc.IsSubComando()) continue;
+
                     List<string> _cls = new()
                     {
                         cc.Nome

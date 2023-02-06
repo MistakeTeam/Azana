@@ -1,6 +1,6 @@
 using System.Reflection;
 
-namespace Remy.Interfaces
+namespace Remy
 {
     public abstract class ComandoAbstrado
     {
@@ -21,7 +21,7 @@ namespace Remy.Interfaces
 
                         return t != null && t.IsGenericType && !t.IsInterface && t.IsAbstract &&
                             t.GetGenericTypeDefinition() == typeof(ComandoAbstrado<>) &&
-                            y.BaseType.GetGenericArguments()[0] == GetType();
+                            t.GetGenericArguments()[0] == GetType();
                     }
                 )
                 .ToArray();
