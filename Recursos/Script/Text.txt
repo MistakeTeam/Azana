@@ -1,0 +1,29 @@
+# Invisivel
+
+isso_pode = {{
+    id = 990
+    comer = true
+    correr = false
+}}
+
+cade = {{
+    comida = 86,57
+    mercado = {{
+        arroz = 65
+        feijao = 65
+    }}
+    shopping = {{
+        americanas = {{
+            kitkat = 12
+            livros = {{
+                fantasia = {{
+                    mistborn = 80
+                }}
+            }}
+        }}
+    }}
+}}
+
+tommy = {{
+    id = 4323
+}}
