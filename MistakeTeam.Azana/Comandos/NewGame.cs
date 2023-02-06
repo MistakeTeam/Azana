@@ -1,5 +1,4 @@
 using Remy;
-using Remy.Interfaces;
 
 namespace MistakeTeam.Azana.Comando
 {
@@ -29,7 +28,7 @@ namespace MistakeTeam.Azana.Comando
             {
                 switch (arg)
                 {
-                    case "value1":
+                    case "easy":
                         break;
                     default:
                         break;

@@ -3,6 +3,7 @@ using MistakeTeam.Azana.Mundo;
 using MistakeTeam.Azana.Texto;
 using Remy;
 using Remy.Logs;
+using Remy.Texto;
 
 namespace MistakeTeam.Azana
 {
@@ -22,7 +23,7 @@ namespace MistakeTeam.Azana
             // Iniciando modulos
             Mapa.Iniciar();
 
-            Mensagem.Enviar(Localizar.PegarTexto(TextoPath.NARRADOR, "oo"));
+            Mensagem.Enviar(Localizar.PegarTexto(TextoPath.NARRADOR, "OO"));
 
             Eventos.OnProcessExit((a, b) =>
             {
