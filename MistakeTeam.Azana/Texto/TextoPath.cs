@@ -3,7 +3,7 @@ namespace MistakeTeam.Azana.Texto
     public class TextoPath
     {
         private static Lang lang = Lang.PT_BR;
-        private static string pathLANG = Directory.GetCurrentDirectory() + $"/Textos/{lang}/";
+        private static string pathLANG = Directory.GetCurrentDirectory() + $"/Recursos/Textos/{lang}/";
 
         // MAIN
         public static readonly string NARRADOR = $"{pathLANG}/Narrador.txt";

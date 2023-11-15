@@ -20,7 +20,7 @@ namespace Remy
 
             Mensagem.BemVindo(op.BemVindo);
 
-            ScriptsParse SP = new ScriptsParse($"{Directory.GetCurrentDirectory()}/Script/Text.txt");
+            ScriptsParse SP = new ScriptsParse($"{Directory.GetCurrentDirectory()}/Recursos/Script/Text.txt");
             Mensagem.Enviar(SP.GetChave("tommy.id"));
             Mensagem.Enviar(SP.GetChave("isso_pode.id"));
             Mensagem.Enviar(SP.GetChave("isso_pode.comer"));
