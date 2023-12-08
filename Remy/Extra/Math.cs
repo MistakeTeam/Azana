@@ -5,7 +5,7 @@ namespace Remy.Extra
     ///<Summary>
     /// Classe calculadora, concentrando todas as funções matemáticas.
     ///</Summary>
-    public static class Extra_Math
+    public static class Math
     {
         ///<Summary>
         /// Pegar a porcentagem de um valor.
