@@ -1,4 +1,3 @@
-using Remy.Extra;
 using Remy.Logs;
 
 namespace Remy.ScriptParse
@@ -28,7 +27,7 @@ namespace Remy.ScriptParse
                 LogFile.WriteLine("============================");
                 LISTA_CHAVE = CHAVE_BRUTA.Split(".");
                 CHAVE_INDEX = 0;
-                LINHA_INDEX = Extra_Array.FindIndex(TEXTO_BRUTO, 0, x => x.Contains(LISTA_CHAVE[CHAVE_INDEX]));
+                LINHA_INDEX = Extra.Array.FindIndex(TEXTO_BRUTO, 0, x => x.Contains(LISTA_CHAVE[CHAVE_INDEX]));
                 _start = true;
             }
 
