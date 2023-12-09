@@ -3,7 +3,7 @@ using System.Reflection;
 using System.Text;
 using Remy.Logs;
 
-namespace Remy
+namespace Remy.Render
 {
     public class Mensagem
     {
