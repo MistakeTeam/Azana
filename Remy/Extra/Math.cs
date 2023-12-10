@@ -1,5 +1,3 @@
-using System;
-
 namespace Remy.Extra
 {
     ///<Summary>
