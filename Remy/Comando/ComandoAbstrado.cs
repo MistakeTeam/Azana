@@ -1,6 +1,6 @@
 using System.Reflection;
 
-namespace Remy
+namespace Remy.Comando
 {
     public abstract class ComandoAbstrado
     {

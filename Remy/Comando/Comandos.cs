@@ -1,7 +1,7 @@
 using System.Reflection;
 using Remy.Logs;
 
-namespace Remy
+namespace Remy.Comando
 {
     public class Comandos
     {
