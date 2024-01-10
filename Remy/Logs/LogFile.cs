@@ -135,8 +135,9 @@ namespace Remy.Logs
             {
                 using StreamWriter _filelog = File.AppendText(_filepath + _filename);
 
-                StackTrace st = new StackTrace();
+                StackTrace st = new StackTrace(0, true);
                 StackFrame sf = st.GetFrame(1);
+                // string traceString = ExtractFormattedStackTrace(st);
 
                 // Volte uma casa
                 if (sf.GetMethod().Name == "WriteLine")
@@ -145,8 +146,9 @@ namespace Remy.Logs
                 }
 
                 _filelog.Write("\r\n[{0} {1}] ", DateTime.Now.ToShortDateString(), DateTime.Now.ToLongTimeString());
-                _filelog.Write("[{0}.{1}:{2}] {3}",
-                    sf.GetMethod().DeclaringType.Namespace, sf.GetMethod().DeclaringType.Name, sf.GetMethod().Name, mensagem);
+                // _filelog.Write(traceString);
+                
+                _filelog.Write("[{0}.{1}:{2}] {3}", sf.GetMethod().DeclaringType.Namespace, sf.GetMethod().DeclaringType.Name, sf.GetMethod().Name, mensagem);
             }
             catch (Exception e)
             {
