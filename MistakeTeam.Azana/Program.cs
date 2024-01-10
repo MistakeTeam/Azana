@@ -9,9 +9,11 @@ namespace MistakeTeam.Azana
 {
     public class Program
     {
-        private static void Inicio()
+        public static Motor Remy = new Motor();
+
+        public static void Inicio()
         {
-            Motor.Ligar(new RemyOptions()
+            Remy.Ligar(new RemyOptions()
             {
                 Nome = "Azana",
                 BemVindo = "Algo aconteceu..."
@@ -30,14 +32,7 @@ namespace MistakeTeam.Azana
                 LogFile.WriteLine("Tchauzinho");
             });
 
-            // Loop de comandos
-            while (true)
-            {
-                Console.Write(">");
-                string[] args = Console.ReadLine().Split(" ");
-
-                Comandos.Executar(args);
-            }
+            
         }
 
         public static async Task Main(string[] args)
